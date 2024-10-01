@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjx5ybl7hip34"]
+
+[ext_resource type="Texture2D" uid="uid://ba7uypn7qp66w" path="res://assets/godot-invader-small.png" id="1_5hjhf"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dcu7x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6il2"]
+atlas = ExtResource("1_5hjhf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dbgm"]
+atlas = ExtResource("1_5hjhf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ccfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6il2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dbgm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nnyr"]
+radius = 8.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(139, 76)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_dcu7x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1ccfh")
+autoplay = "default"
+frame_progress = 0.64005
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8nnyr")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)

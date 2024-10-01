@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhwerti78jboa"]
+
+[ext_resource type="Texture2D" uid="uid://drnslwr1gira5" path="res://assets/Space_Stars2.png" id="1_cercq"]
+[ext_resource type="PackedScene" uid="uid://bnhtr2kp5nfv3" path="res://scenes/space_ship.tscn" id="2_5xw1o"]
+[ext_resource type="PackedScene" uid="uid://dauhi58lp3dor" path="res://scenes/wall.tscn" id="3_ukg0x"]
+[ext_resource type="PackedScene" uid="uid://ctgok56i1pafc" path="res://scenes/enemy_group.tscn" id="4_rcwcl"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(128, 120)
+texture = ExtResource("1_cercq")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 240)
+
+[node name="SpaceShip" parent="." instance=ExtResource("2_5xw1o")]
+
+[node name="Wall" parent="." instance=ExtResource("3_ukg0x")]
+
+[node name="Wall" parent="Wall" instance=ExtResource("3_ukg0x")]
+position = Vector2(256, 0)
+
+[node name="EnemyGroup" parent="." instance=ExtResource("4_rcwcl")]
+position = Vector2(4, 0)
