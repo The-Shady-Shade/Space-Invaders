@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://d885bdg1gea1"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_oswxu"]
+[ext_resource type="PackedScene" uid="uid://c2e1yuuqf6auh" path="res://UI/lives_bar.tscn" id="2_dsjot"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oswxu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 256.0
+offset_bottom = 240.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LivesBar" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_dsjot")]
+layout_mode = 2

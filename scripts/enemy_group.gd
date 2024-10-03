@@ -4,9 +4,10 @@ const ROW_STEP = 10.0
 const SPD_BOOST = 2.5
 
 @onready var block_timer := $BlockTimer
+@onready var shot_timer := $ShotTimer
 
 var direction := Vector2.RIGHT
-var spd := 5.0
+var spd := 7.5
 
 func _process(delta):
 	global_position += direction * spd * delta
@@ -18,3 +19,9 @@ func change_direction():
 	global_position.y += ROW_STEP
 	spd += SPD_BOOST
 	block_timer.start()
+
+
+func _on_shot_timer_timeout() -> void:
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	if enemies.size() > 0:
+		enemies.pick_random().shot()

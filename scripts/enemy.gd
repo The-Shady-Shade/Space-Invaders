@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const BULLET_SCENE = preload("res://scenes/enemy_bullet.tscn")
+
 @onready var raycast_left := $RayCastLeft
 @onready var raycast_right := $RayCastRight
 
@@ -8,4 +10,11 @@ func _physics_process(delta):
 		get_tree().call_group("enemy_group", "change_direction")
 
 func destroy():
+	Globals.change_points(1)
+	Events.enemy_died.emit()
 	queue_free()
+
+func shot():
+	var bullet = BULLET_SCENE.instantiate()
+	bullet.global_position += global_position + Vector2(0, 10.0)
+	add_child(bullet)

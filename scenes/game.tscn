@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhwerti78jboa"]
+[gd_scene load_steps=7 format=3 uid="uid://bhwerti78jboa"]
 
-[ext_resource type="Texture2D" uid="uid://drnslwr1gira5" path="res://assets/Space_Stars2.png" id="1_cercq"]
-[ext_resource type="PackedScene" uid="uid://bnhtr2kp5nfv3" path="res://scenes/space_ship.tscn" id="2_5xw1o"]
-[ext_resource type="PackedScene" uid="uid://dauhi58lp3dor" path="res://scenes/wall.tscn" id="3_ukg0x"]
-[ext_resource type="PackedScene" uid="uid://ctgok56i1pafc" path="res://scenes/enemy_group.tscn" id="4_rcwcl"]
+[ext_resource type="PackedScene" uid="uid://d885bdg1gea1" path="res://UI/hud.tscn" id="1_arhqp"]
+[ext_resource type="Texture2D" uid="uid://drnslwr1gira5" path="res://Assets/Space_Stars2.png" id="1_cercq"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_e0dxx"]
+[ext_resource type="PackedScene" uid="uid://bnhtr2kp5nfv3" path="res://Scenes/space_ship.tscn" id="2_5xw1o"]
+[ext_resource type="PackedScene" uid="uid://dauhi58lp3dor" path="res://Scenes/wall.tscn" id="3_ukg0x"]
+[ext_resource type="PackedScene" uid="uid://ctgok56i1pafc" path="res://Scenes/enemy_group.tscn" id="4_rcwcl"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_e0dxx")
+
+[node name="HUD" parent="." instance=ExtResource("1_arhqp")]
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

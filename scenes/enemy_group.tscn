@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctgok56i1pafc"]
 
-[ext_resource type="Script" path="res://scripts/enemy_group.gd" id="1_ta41r"]
-[ext_resource type="PackedScene" uid="uid://cjx5ybl7hip34" path="res://scenes/enemy.tscn" id="2_dcqgv"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="1_ta41r"]
+[ext_resource type="PackedScene" uid="uid://cjx5ybl7hip34" path="res://Scenes/enemy.tscn" id="2_dcqgv"]
 
 [node name="EnemyGroup" type="Node2D" groups=["enemy_group"]]
 script = ExtResource("1_ta41r")
@@ -45,3 +45,9 @@ position = Vector2(194, 52)
 [node name="BlockTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
